@@ -42,6 +42,15 @@ def set_driver_to_gpu():
             return
     raise RuntimeError("Could not find an active GPU backend")
 
+def set_driver_to_spyre():
+    driver = triton.runtime.driver
+    if backend := triton.backends.backends.get("spyre", None):
+        if isinstance(driver.active, backend.driver):
+            # Don't re-initialize backend if it is already active
+            return
+        driver.set_active(backend.driver())
+        return
+    raise RuntimeError("Could not find an active Spyre backend")
 
 def get_backend_options():
     driver = triton.runtime.driver

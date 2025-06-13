@@ -83,6 +83,7 @@ def has_triton() -> bool:
         "cuda": cuda_extra_check,
         "xpu": _return_true,
         "cpu": cpu_extra_check,
+        "spyre": _return_true,
     }
 
     def is_device_compatible_with_triton():

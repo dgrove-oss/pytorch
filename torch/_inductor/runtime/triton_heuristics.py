@@ -496,6 +496,8 @@ class CachingAutotuner(KernelInterface):
 
         if self.device_props.type == "cpu":
             triton_helpers.set_driver_to_cpu()
+        elif self.device_props.type == "spyre":
+            triton_helpers.set_driver_to_spyre()
         else:
             triton_helpers.set_driver_to_gpu()
 
