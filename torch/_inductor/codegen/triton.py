@@ -3492,8 +3492,6 @@ class TritonKernel(SIMDKernel[TritonCSEVariable]):
             device_type = V.graph.get_current_device_or_throw().type
             if device_type == "cpu":
                 code.splice("triton_helpers.set_driver_to_cpu()")
-            elif device_type == "spyre":
-                code.splice("triton_helpers.set_driver_to_spyre()")
             else:
                 code.splice("triton_helpers.set_driver_to_gpu()")
 
