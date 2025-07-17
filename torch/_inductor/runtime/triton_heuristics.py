@@ -528,6 +528,8 @@ class CachingAutotuner(KernelInterface):
                 options["waves_per_eu"] = compile_meta["waves_per_eu"]
             if "matrix_instr_nonkdim" in compile_meta:
                 options["matrix_instr_nonkdim"] = compile_meta["matrix_instr_nonkdim"]
+        if self.device_props.type == "spyre":
+            options["spyre_options"] = compile_meta['spyre_options']
         compile_kwargs = {
             "target": target,
             "options": options,
